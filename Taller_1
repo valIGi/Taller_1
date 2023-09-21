@@ -1,0 +1,131 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hola");
+        System.out.println("Ingrese el número del ejercicio (1, 2, 3, 4, 5)");
+        char operacion = scanner.next().charAt(0);
+
+        switch (operacion) {
+            case '1':
+                // Ejercicio #1: División
+                System.out.println("Ingrese numero del divisor");
+                int divisor = scanner.nextInt();
+                System.out.println("Ingrese numero del dividendo");
+                int dividendo = scanner.nextInt();
+                int residuo = divisor % dividendo;
+                double resultado = (double) divisor / dividendo;
+
+                if (residuo == 0) {
+                    System.out.println("La división es exacta");
+                    System.out.println("El cociente es: " + resultado);
+                    System.out.println("El residuo es: " + residuo);
+                } else {
+                    System.out.println("La división no es exacta");
+                    System.out.println("El cociente: " + resultado);
+                    System.out.println("El residuo es: " + residuo);
+                }
+                break;
+
+            case '2':
+                // Ejercicio #2: Fecha de nacimiento
+                System.out.println("Ingrese su fecha de nacimiento:");
+                System.out.println("Día:");
+                int dia1 = scanner.nextInt();
+                System.out.println("Mes:");
+                int mes1 = scanner.nextInt();
+                System.out.println("Año:");
+                int anno1 = scanner.nextInt();
+
+                java.util.Date fechaActual = new java.util.Date();
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
+                String fecha = sdf.format(fechaActual);
+                String[] fechaPartes = fecha.split("-");
+                int dia = Integer.parseInt(fechaPartes[2]);
+                int mes = Integer.parseInt(fechaPartes[1]);
+                int anno = Integer.parseInt(fechaPartes[0]);
+
+                int edadT = anno - anno1 - 1;
+
+                if (mes > mes1 || (mes == mes1 && dia >= dia1)) {
+                    edadT += 1;
+                }
+
+                System.out.println("Su edad es de: " + edadT + " años");
+                break;
+
+            case '3':
+                // Ejercicio #3: Clasificación de triángulos
+                System.out.println("Ingresa el valor de a:");
+                int a = scanner.nextInt();
+                System.out.println("Ingresa el valor de b:");
+                int b = scanner.nextInt();
+                System.out.println("Ingresa el valor de c:");
+                int c = scanner.nextInt();
+
+                if (a + b > c && b + c > a && a + c > b) {
+                    if (a == b && b == c) {
+                        System.out.println("Su triángulo es equilátero.");
+                    } else if (a == b || b == c || a == c) {
+                        System.out.println("Su triángulo es isósceles.");
+                    } else {
+                        System.out.println("Su triángulo es escaleno.");
+                    }
+                } else {
+                    System.out.println("No es un triángulo válido");
+                }
+                break;
+
+            case '4':
+                // Ejercicio #4: Riesgo según IMC
+                System.out.println("Ingresa altura en metros");
+                double alt = scanner.nextDouble();
+                System.out.println("Ingresa peso en kg");
+                double peso = scanner.nextDouble();
+                System.out.println("Ingresa edad");
+                int edad = scanner.nextInt();
+                double imc = peso / (alt * alt);
+
+                if (imc < 22.0 && edad < 45) {
+                    System.out.println("El riesgo es bajo, su IMC: " + imc);
+                } else if (imc < 22 && edad >= 45) {
+                    System.out.println("El riesgo es medio, su IMC: " + imc);
+                } else if (imc >= 22 && edad < 45) {
+                    System.out.println("El riesgo es medio, su IMC: " + imc);
+                } else {
+                    System.out.println("El riesgo es alto, su IMC: " + imc);
+                }
+                break;
+
+            case '5':
+                // Ejercicio #5: Set de tenis
+                System.out.print("Juegos ganados por A: ");
+                int juegosA = scanner.nextInt();
+                System.out.print("Juegos ganados por B: ");
+                int juegosB = scanner.nextInt();
+
+                if (juegosA > 7 || juegosB > 7 || (juegosA == 7 && juegosB == 7) || (juegosA > 6 && juegosB > 6)) {
+                    System.out.println("Resultado no es válido");
+                } else if ((juegosA >= 6 && juegosB < 5) || (juegosB >= 6 && juegosA < 5)) {
+                    System.out.println("Resultado no es válido");
+                } else if (juegosB >= 6 && juegosA == 5) {
+                    System.out.println("Jugador B gana");
+                } else if (juegosA > 6 && juegosB == 5) {
+                    System.out.println("Jugador A gana");
+                } else if (juegosB >= 6 && juegosA == 6) {
+                    System.out.println("Jugador B gana");
+                } else if (juegosA >= 6 && juegosB == 6) {
+                    System.out.println("Jugador A gana");
+                } else {
+                    System.out.println("Aun no termina, ¡JUEGUE!");
+                }
+                break;
+
+            default:
+                System.out.println("La operación es inválida");
+                break;
+        }
+    } // cierra main 
+}// cierra class
